@@ -15,7 +15,7 @@ public class EncryptionService {
     private String encryptionKey;
 
     private static final String ALGORITHM = "AES/CBC/PKCS5Padding";
-    private static final String IV = "123467890123456";
+    private static final String IV = "1234567890123456";
 
     public String encrypt(String data) {
         try {
