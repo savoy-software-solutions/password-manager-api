@@ -2,6 +2,7 @@ package com.johnsavoy.password_manager_api.service;
 
 import com.johnsavoy.password_manager_api.dto.PasswordEntryRequest;
 import com.johnsavoy.password_manager_api.dto.PasswordEntryResponse;
+import com.johnsavoy.password_manager_api.exception.ResourceNotFoundException;
 import com.johnsavoy.password_manager_api.model.PasswordEntry;
 import com.johnsavoy.password_manager_api.model.User;
 import com.johnsavoy.password_manager_api.repository.PasswordEntryRepository;
@@ -82,7 +83,7 @@ public class PasswordEntryService {
         User user = userService.findByUsername(username);
         PasswordEntry entry = passwordEntryRepository
                 .findByIdAndUserId(id, user.getId())
-                .orElseThrow(() -> new RuntimeException("Entry not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Password entry not found"));
 
         entry.setSiteName(request.getSiteName());
         entry.setSiteUrl(request.getSiteUrl());
@@ -106,7 +107,7 @@ public class PasswordEntryService {
         User user = userService.findByUsername(username);
         PasswordEntry entry = passwordEntryRepository
                 .findByIdAndUserId(id, user.getId())
-                .orElseThrow(() -> new RuntimeException("Entry not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Password entry not found"));
         passwordEntryRepository.delete(entry);
     }
 }
