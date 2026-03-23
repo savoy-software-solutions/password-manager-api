@@ -3,7 +3,7 @@ package com.johnsavoy.password_manager_api.dto;
 public class AuthResponse {
     private String token;
 
-    public AuthResponse() {
+    public AuthResponse(String token) {
         this.token = token;
     }
 

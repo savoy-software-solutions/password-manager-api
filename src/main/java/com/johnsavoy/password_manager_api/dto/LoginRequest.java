@@ -1,6 +1,6 @@
 package com.johnsavoy.password_manager_api.dto;
 
-public class LoginRegister {
+public class LoginRequest {
     private String username;
     private String password;
 
