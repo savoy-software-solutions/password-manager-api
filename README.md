@@ -23,6 +23,25 @@ AES-256 encryption for maximum security.
 - All routes except /auth/** require a valid token
 - Data ownership validation ensures users can only access their own entries
 
+## Error Handling
+
+All errors return a consistent JSON response:
+```json
+{
+    "status": 404,
+    "error": "Not Found",
+    "message": "Password entry not found",
+    "timestamp": "2026-03-23T13:45:36"
+}
+```
+
+| Exception | Status Code |
+|---|---|
+| Resource not found | 404 Not Found |
+| Username not found | 404 Not Found |
+| Bad request | 400 Bad Request |
+| Unexpected error | 500 Internal Server Error |
+
 ## How It Works
 
 1. User registers and receives a JWT token
